@@ -1,4 +1,4 @@
-package elementos;
+package recursos;
 
 public class Funcionario {
 
