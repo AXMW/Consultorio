@@ -18,6 +18,7 @@ public class ReadPaciente {
 					resultset.getString("CPF_Pac"), resultset.getString("Telefone"));
 			pacientes.add(p);
 		}
+		resultset.close();
 		return pacientes;
 	}
 }
