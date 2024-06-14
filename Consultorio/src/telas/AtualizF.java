@@ -11,13 +11,12 @@ import java.awt.Font;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
-import javax.swing.JPasswordField;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 import recursos.Funcionario;
 import conexao.funcionario.*;
-import conexao.funcionario.*;
+
 
 
 public class AtualizF {
