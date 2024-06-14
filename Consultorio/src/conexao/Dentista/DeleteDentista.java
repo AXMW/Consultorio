@@ -1,12 +1,12 @@
-package conexao.paciente;
+package conexao.Dentista;
+
 import java.sql.Connection;
 import java.sql.Statement;
 
-
-public class DeletePaciente {
+public class DeleteDentista {
 	public static void delete(Connection con, int id) throws Exception {
 		Statement statement = con.createStatement();
-		String query = "delete from Paciente where ID_Pac = " + id + ";";
+		String query = "delete from Dentista where ID_Dent = " + id + ";";
 		statement.executeUpdate(query);
 	}
 }
