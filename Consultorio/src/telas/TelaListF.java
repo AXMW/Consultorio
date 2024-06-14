@@ -136,16 +136,22 @@ public class TelaListF {
                 	try {
                 		if(valorID!=0) {
     						DeleteFuncionario.delete(TelaLogin.con, valorID);
-    						initialize();
+    						for (int i = 0; i < model.getRowCount(); i++) {
+                                if (Integer.parseInt((String) model.getValueAt(i, 0)) == valorID) {
+                                    model.removeRow(i);
+                                    model.fireTableRowsDeleted(i, i);
+                                    break;
+                                }
+                            }
+    						valorID = 0;
                 		}
 						else {
 							JOptionPane.showMessageDialog(btnDeletar, "Selecione o funcionário que deseja deletar","Mensagem", 2);
-							throw new Exception();
 						}
 					} 
                 	catch (Exception e1) {
 						// TODO Auto-generated catch block
-                		JOptionPane.showMessageDialog(btnDeletar, "Um erro inesperado aconteceu","Mensagem", 3);
+                		JOptionPane.showMessageDialog(btnDeletar, e1);
 					}
                     // Usuário confirmou a exclusão
                     System.out.println("Item deletado.");
