@@ -108,11 +108,12 @@ public class TelaCadD {
 				try {
 					if (TelaLogin.f.isGerente()) {
 						if (nomeFunc_Field.getText().isBlank() || CRM_Field.getText().isBlank() || Especialidade_Field.getText().isBlank()) {
-							throw new Exception("Todos os Campos tem que estar preenchidos!");
+							JOptionPane.showMessageDialog(null, "Algum campo esta vazio", "Credenciais incorretas", JOptionPane.ERROR_MESSAGE);
+						}else {
+							Dentista d = new Dentista(nomeFunc_Field.getText(), CRM_Field.getText(), Especialidade_Field.getText());
+							CreateDentista.create(TelaLogin.con, d);
+							JOptionPane.showMessageDialog(null, "Dentista Cadastrado!", "Cadastro", JOptionPane.INFORMATION_MESSAGE);
 						}
-						Dentista d = new Dentista(nomeFunc_Field.getText(), CRM_Field.getText(), Especialidade_Field.getText());
-						CreateDentista.create(TelaLogin.con, d);
-						JOptionPane.showMessageDialog(null, "Dentista Cadastrado!", "Cadastro", JOptionPane.INFORMATION_MESSAGE);
 					}else {
 						JOptionPane.showMessageDialog(null, "É necessário ter cargo de gerente para cadastrar!", "Cadastro", JOptionPane.ERROR_MESSAGE);
 					}
