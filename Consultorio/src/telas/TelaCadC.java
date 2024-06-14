@@ -7,11 +7,17 @@ import java.awt.Color;
 import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.JTextField;
+
+import conexao.consulta.CreateConsulta;
+import conexao.dentista.ReadDentista;
+import conexao.paciente.ReadPaciente;
+
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JPasswordField;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import recursos.*;
 
 public class TelaCadC {
 
@@ -98,6 +104,18 @@ public class TelaCadC {
 		JButton btnAgendar = new JButton("Agendar");
 		btnAgendar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				try {
+					Paciente p = ReadPaciente.read(TelaLogin.con, CPFPac_Field.getText());
+					Dentista d = ReadDentista.read(TelaLogin.con, CRMDent_Field.getText());
+					String tipoConsulta = tipoCons_Field.getText();
+					String data = data_Field.getText();
+					Consulta c = new Consulta(tipoConsulta, data, p, TelaLogin.f, d);
+					CreateConsulta.create(TelaLogin.con, c);
+				} catch(Exception ex) {
+					ex.printStackTrace();
+				}
+				
+				
 			}
 		});
 		btnAgendar.setBounds(227, 263, 109, 36);

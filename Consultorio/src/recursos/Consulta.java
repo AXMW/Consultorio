@@ -16,6 +16,13 @@ public class Consulta {
 		this.funcionario = funcionario;
 		this.dentista = dentista;
 	}
+	public Consulta(String tipo_Consulta, String data_Consulta, Paciente paciente, Funcionario funcionario, Dentista dentista) {
+		this.tipo_Consulta = tipo_Consulta;
+		this.data_Consulta = data_Consulta;
+		this.paciente = paciente;
+		this.funcionario = funcionario;
+		this.dentista = dentista;
+	}
 
 	public int getId_Cons() {
 		return id_Cons;
