@@ -5,6 +5,8 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import java.awt.Color;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.Font;
 import javax.swing.JTextField;
 
@@ -18,6 +20,7 @@ import javax.swing.JPasswordField;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import recursos.*;
+import util.Verificadores;
 
 public class TelaCadC {
 
@@ -109,8 +112,13 @@ public class TelaCadC {
 					Dentista d = ReadDentista.read(TelaLogin.con, CRMDent_Field.getText());
 					String tipoConsulta = tipoCons_Field.getText();
 					String data = data_Field.getText();
-					Consulta c = new Consulta(tipoConsulta, data, p, TelaLogin.f, d);
-					CreateConsulta.create(TelaLogin.con, c);
+					if(Verificadores.verificarData(data)) {
+						Consulta c = new Consulta(tipoConsulta, data, p, TelaLogin.f, d);
+						CreateConsulta.create(TelaLogin.con, c);
+					} else {
+						JOptionPane.showMessageDialog(null, "Formato de data incorreto, o formato correto é:'YYYY-MM-DD HH:MM:SS'");
+					}
+					
 				} catch(Exception ex) {
 					ex.printStackTrace();
 				}
