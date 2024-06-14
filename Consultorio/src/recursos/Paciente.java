@@ -23,6 +23,9 @@ public class Paciente {
 		this.CPF_Pac = CPF_Pac;
 		this.telefone = telefone;
 	}
+	public Paciente(int id_Pac) {
+		this.id_Pac = id_Pac;
+	}
 
 	public int getId_Pac() {
 		return id_Pac;

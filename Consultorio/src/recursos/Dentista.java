@@ -19,6 +19,9 @@ public class Dentista {
 		this.CRM = CRM;
 		this.especialidade = especialidade;
 	}
+	public Dentista(int id_Dent) {
+		this.id_Dent = id_Dent;
+	}
 
 	public int getId_Dent() {
 		return id_Dent;
