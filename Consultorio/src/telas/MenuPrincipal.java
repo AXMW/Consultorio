@@ -75,14 +75,17 @@ public class MenuPrincipal {
 		btnAreaC.setBounds(272, 113, 158, 36);
 		frame.getContentPane().add(btnAreaC);
 		
-		btnAreaF = new JButton("Área Funcionários");
-		btnAreaF.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				AreaFuncionario af = new AreaFuncionario();
-				af.main(null);
-			}
-		});
-		btnAreaF.setBounds(175, 210, 158, 36);
-		frame.getContentPane().add(btnAreaF);
+		if(TelaLogin.f.isGerente()) {
+			btnAreaF = new JButton("Área Funcionários");
+			btnAreaF.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					AreaFuncionario af = new AreaFuncionario();
+					af.main(null);
+				}
+			});
+			btnAreaF.setBounds(175, 210, 158, 36);
+			frame.getContentPane().add(btnAreaF);
+		}
+		
 	}
 }

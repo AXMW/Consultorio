@@ -13,17 +13,20 @@ import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JPasswordField;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 import recursos.Funcionario;
-import conexao.funcionario.CreateFuncionario;
+import conexao.funcionario.*;
+import conexao.funcionario.*;
 
-public class AtualF {
+
+public class AtualizF {
 
 	private JFrame frame;
 	private JButton btnVoltar;
 	private JTextField nomeFunc_Field;
 	private JTextField loginFunc_Field;
-	private JPasswordField senhaFunc_Field;
+	private JTextField senhaFunc_Field;
 
 	/**
 	 * Launch the application.
@@ -32,7 +35,7 @@ public class AtualF {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					AtualF window = new AtualF();
+					AtualizF window = new AtualizF();
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -43,15 +46,18 @@ public class AtualF {
 
 	/**
 	 * Create the application.
+	 * @throws Exception 
 	 */
-	public AtualF() {
+	public AtualizF() throws Exception {
 		initialize();
 	}
 
 	/**
 	 * Initialize the contents of the frame.
+	 * @throws Exception 
 	 */
-	private void initialize() {
+	private void initialize() throws Exception {
+		ArrayList<Funcionario> func = ReadFuncionario.read(TelaLogin.con);
 		frame = new JFrame();
 		frame.getContentPane().setBackground(Color.BLUE);
 		frame.setBounds(100, 100, 533, 394);
@@ -66,6 +72,13 @@ public class AtualF {
 		btnVoltar = new JButton("Voltar");
 		btnVoltar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				try {
+					TelaListF tlf = new TelaListF();
+					tlf.main(null);
+				} catch (Exception e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 				frame.dispose();
 			}
 		});
@@ -73,16 +86,33 @@ public class AtualF {
 		frame.getContentPane().add(btnVoltar);
 		
 		nomeFunc_Field = new JTextField();
+		for(Funcionario itemF: func){
+			if(itemF.getId_Func() == TelaListF.valorID) {
+				nomeFunc_Field.setText(itemF.getNome_Func());
+			}
+		}
 		nomeFunc_Field.setBounds(215, 85, 191, 20);
 		frame.getContentPane().add(nomeFunc_Field);
 		nomeFunc_Field.setColumns(10);
 		
 		loginFunc_Field = new JTextField();
+		for(Funcionario itemF: func){
+			if(itemF.getId_Func() == TelaListF.valorID) {
+				loginFunc_Field.setText(itemF.getLogin());
+			}
+		}
 		loginFunc_Field.setBounds(215, 123, 191, 20);
 		frame.getContentPane().add(loginFunc_Field);
 		loginFunc_Field.setColumns(10);
 		
 		JCheckBox checkboxGerente = new JCheckBox("Gerente?");
+		for(Funcionario itemF: func){
+			if(itemF.getId_Func() == TelaListF.valorID) {
+				if(itemF.isGerente()) {
+					checkboxGerente.setSelected(true);
+				}
+			}
+		}
 		checkboxGerente.setBounds(215, 212, 69, 23);
 		frame.getContentPane().add(checkboxGerente);
 		
@@ -101,29 +131,39 @@ public class AtualF {
 		lblNewLabel_1_1_1.setBounds(152, 169, 50, 16);
 		frame.getContentPane().add(lblNewLabel_1_1_1);
 		
-		senhaFunc_Field = new JPasswordField();
+		senhaFunc_Field = new JTextField();
+		for(Funcionario itemF: func){
+			if(itemF.getId_Func() == TelaListF.valorID) {
+				senhaFunc_Field.setText(itemF.getSenha());
+			}
+		}
+		senhaFunc_Field.setColumns(10);
 		senhaFunc_Field.setBounds(215, 168, 191, 20);
 		frame.getContentPane().add(senhaFunc_Field);
 		
-		JButton btnCadastrar = new JButton("Cadastrar");
+		JButton btnCadastrar = new JButton("Alterar");
 		btnCadastrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
-					if (TelaLogin.f.isGerente()) {
-						String senha = new String(senhaFunc_Field.getPassword());
-						
 						boolean gerente = false;
 						
 						if (checkboxGerente.isSelected()) {
 							gerente = true;
 						}
-						Funcionario f = new Funcionario(nomeFunc_Field.getText(), loginFunc_Field.getText(), senha, gerente);
-						CreateFuncionario.create(TelaLogin.con, f);
-						JOptionPane.showMessageDialog(null, "Funcionário Cadastrado!", "Cadastro", JOptionPane.INFORMATION_MESSAGE);
-					}else {
-						JOptionPane.showMessageDialog(null, "É necessário ter cargo de gerente para cadastrar!", "Cadastro", JOptionPane.ERROR_MESSAGE);
-					}
+						Funcionario f = new Funcionario(TelaListF.valorID, nomeFunc_Field.getText(), loginFunc_Field.getText(), senhaFunc_Field.getText(), gerente);
+						UpdateFuncionario.update(TelaLogin.con, f);
+						JOptionPane.showMessageDialog(null, "Funcionário atualizado!", "Atualização", JOptionPane.INFORMATION_MESSAGE);
+						TelaListF.valorID = 0;
+						try {
+							TelaListF tlf = new TelaListF();
+							tlf.main(null);
+						} catch (Exception e1) {
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
+						}
+						frame.dispose();
 						
+					
 				}catch(Exception e1){
 					e1.printStackTrace();
 					JOptionPane.showMessageDialog(null, "Algo foi digitado errado!", "Credenciais incorretas", JOptionPane.ERROR_MESSAGE);
@@ -132,6 +172,7 @@ public class AtualF {
 		});
 		btnCadastrar.setBounds(228, 274, 109, 36);
 		frame.getContentPane().add(btnCadastrar);
+		
 		
 	}
 }

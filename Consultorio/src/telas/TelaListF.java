@@ -72,8 +72,8 @@ public class TelaListF {
 		
 		table = new JTable();
 		DefaultTableModel model = new DefaultTableModel();
-		String[] column = {"ID", "Nome", "Login", "Senha"};
-		final String[] row = new String[4];
+		String[] column = {"ID", "Nome", "Login", "Senha", "Gerente"};
+		final String[] row = new String[5];
 		model.setColumnIdentifiers(column);
 		scrollPane.setViewportView(table);
 		table.setModel(model);
@@ -82,6 +82,7 @@ public class TelaListF {
 			row[1] = itemF.getNome_Func();
 			row[2] = itemF.getLogin();
 			row[3] = itemF.getSenha();
+			if(itemF.isGerente()) { row[4] = "Sim"; } else { row[4] = "Não"; };
 			model.addRow(row);
 		}
 		
@@ -89,9 +90,9 @@ public class TelaListF {
             @Override
             public void mouseClicked(MouseEvent e) {
                 int selectedRow = table.getSelectedRow();
-                int columnToGet = 0; // Índice da coluna que você quer pegar o valor (começa em 0)
+                int columnToGet = 0;
 
-                if (selectedRow != -1) { // Verifica se alguma linha está selecionada
+                if (selectedRow != -1) { 
                 	Object valorTabela = table.getValueAt(selectedRow, columnToGet);
 
                     try {
@@ -122,14 +123,12 @@ public class TelaListF {
 		JButton btnDeletar = new JButton("Deletar");
 		btnDeletar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				// Mostra a caixa de diálogo de confirmação
                 int response = JOptionPane.showConfirmDialog(frame,
                         "Você tem certeza que deseja deletar?",
                         "Confirmar Exclusão",
                         JOptionPane.YES_NO_OPTION,
                         JOptionPane.QUESTION_MESSAGE);
 
-                // Verifica a resposta do usuário
                 if (response == JOptionPane.YES_OPTION) {
                 	try {
                 		if(valorID!=0) {
@@ -151,11 +150,7 @@ public class TelaListF {
 						// TODO Auto-generated catch block
                 		JOptionPane.showMessageDialog(btnDeletar, e1);
 					}
-                    // Usuário confirmou a exclusão
-                    System.out.println("Item deletado.");
-                    // Aqui você pode colocar o código para deletar o item
                 } else {
-                    // Usuário cancelou a exclusão
                     System.out.println("Exclusão cancelada.");
                 }
 			}
@@ -165,6 +160,23 @@ public class TelaListF {
 		frame.getContentPane().add(btnDeletar);
 		
 		JButton btnAlterar = new JButton("Alterar");
+		btnAlterar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if(valorID !=0) {
+					try {
+						AtualizF af = new AtualizF();
+						af.main(null);
+						frame.dispose();
+					} catch (Exception e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+				}
+				else {
+					JOptionPane.showMessageDialog(btnDeletar, "Selecione o funcionário que deseja alterar","Mensagem", 2);
+				}
+			}
+		});
 		btnAlterar.setBackground(new Color(149, 149, 255));
 		btnAlterar.setBounds(263, 255, 89, 23);
 		frame.getContentPane().add(btnAlterar);
