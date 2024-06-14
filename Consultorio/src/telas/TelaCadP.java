@@ -111,6 +111,7 @@ public class TelaCadP {
 					}
 					Paciente p = new Paciente(nomePac_Field.getText(), endereco_Field.getText(), tipoSang_Field.getText(), CPF_Field.getText(), telefone_Field.getText());
 					CreatePaciente.create(TelaLogin.con, p);
+					JOptionPane.showMessageDialog(null, "Paciente Cadastrado!", "Cadastro", JOptionPane.INFORMATION_MESSAGE);
 				} catch(Exception e1){
 					e1.printStackTrace();
 					JOptionPane.showMessageDialog(null, "Algo foi digitado errado!", "Credenciais incorretas", JOptionPane.ERROR_MESSAGE);

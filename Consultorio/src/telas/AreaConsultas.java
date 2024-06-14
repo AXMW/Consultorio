@@ -58,14 +58,19 @@ public class AreaConsultas {
 		JButton btnAgendar = new JButton("Agendar Consulta");
 		btnAgendar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				TelaCadC tcd = new TelaCadC();
-				tcd.main(null);
+				TelaCadC tcc = new TelaCadC();
+				tcc.main(null);
 			}
 		});
 		btnAgendar.setBounds(134, 111, 223, 36);
 		frame.getContentPane().add(btnAgendar);
 		
 		btnAlterarC = new JButton("Alterar Consulta");
+		btnAlterarC.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				TelaListC tlc = new TelaListC();
+			}
+		});
 		btnAlterarC.setBounds(134, 174, 223, 36);
 		frame.getContentPane().add(btnAlterarC);
 		
