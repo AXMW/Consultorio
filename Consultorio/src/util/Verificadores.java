@@ -58,11 +58,11 @@ public class Verificadores {
 		data = vet[0];
 		String horario = vet[1];
 		
-		vet = data.split("/");
+		vet = data.split("-");
 		
-		int dia = Integer.parseInt(vet[0]);
+		int ano = Integer.parseInt(vet[0]);
 		int mes = Integer.parseInt(vet[1]);
-		int ano = Integer.parseInt(vet[2]);
+		int dia = Integer.parseInt(vet[2]);
 		
 		if (ano < 1000 || ano > 3000 || mes < 1 || mes > 12 || dia < 1 || dia > 31) {
 			return false;
@@ -77,8 +77,9 @@ public class Verificadores {
 		vet = horario.split(":");
 		int hora = Integer.parseInt(vet[0]);
 		int minutos = Integer.parseInt(vet[1]);
+		int segundos = Integer.parseInt(vet[2]);
 		
-		if (hora < 0 || hora > 23 || minutos < 0 || minutos > 59) {
+		if (hora < 0 || hora > 23 || minutos < 0 || minutos > 59 || segundos < 0 || segundos > 59) {
 			return false;
 		}
 		

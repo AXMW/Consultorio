@@ -94,18 +94,24 @@ public class TelaLogin {
 		btnEntrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
+				boolean entrar = false;
+				
 				for (int i = 0; i < funcionarios.size(); i++) {
 					if (funcionarios.get(i).getLogin().equals(login_Field.getText())) {
 						if (funcionarios.get(i).getSenha().equals(senha_Field.getText())) {
 							f = funcionarios.get(i);
-							MenuPrincipal mp = new MenuPrincipal();
-							mp.main(null);
-							frame.dispose();
+							entrar = true;
 							break;
 						}
 					}
 				}
+				if (entrar) {
+					MenuPrincipal mp = new MenuPrincipal();
+					mp.main(null);
+					frame.dispose();
+				}else {
 				JOptionPane.showMessageDialog(null, "O Login e/ou a senha estão errados!", "Credenciais incorretas", JOptionPane.ERROR_MESSAGE);
+				}
 			}
 		});
 		btnEntrar.setBounds(190, 225, 100, 36);
