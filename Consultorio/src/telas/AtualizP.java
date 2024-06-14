@@ -125,35 +125,6 @@ public class AtualizP {
 		lblNewLabel_1_1_1.setBounds(98, 169, 104, 16);
 		frame.getContentPane().add(lblNewLabel_1_1_1);
 		
-		JButton btnCadastrar = new JButton("Cadastrar");
-		btnCadastrar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				try {
-					if (!Verificadores.verificarCPF(CPF_Field.getText())) {
-						throw new Exception("CPF ERRADO!");
-					}
-					Paciente p = new Paciente(TelaListP.valorID,nomePac_Field.getText(), endereco_Field.getText(), tipoSang_Field.getText(), CPF_Field.getText(), telefone_Field.getText());
-					UpdatePaciente.update(TelaLogin.con, p);
-					JOptionPane.showMessageDialog(null, "Paciente atualizado!", "Cadastro", JOptionPane.INFORMATION_MESSAGE);
-					TelaListP.valorID = 0;
-					try {
-						TelaListP tlp = new TelaListP();
-						tlp.main(null);
-					} catch (Exception e1) {
-						// TODO Auto-generated catch block
-						e1.printStackTrace();
-					}
-					frame.dispose();
-				} catch(Exception e1){
-					e1.printStackTrace();
-					JOptionPane.showMessageDialog(null, "Algo foi digitado errado!", "Credenciais incorretas", JOptionPane.ERROR_MESSAGE);
-				}
-
-			}
-		});
-		btnCadastrar.setBounds(247, 290, 109, 36);
-		frame.getContentPane().add(btnCadastrar);
-		
 		lblNewLabel_1_1_2 = new JLabel("Endereco:");
 		lblNewLabel_1_1_2.setFont(new Font("Tahoma", Font.BOLD, 13));
 		lblNewLabel_1_1_2.setBounds(134, 206, 80, 16);
@@ -193,5 +164,34 @@ public class AtualizP {
 		telefone_Field.setColumns(10);
 		telefone_Field.setBounds(215, 247, 191, 20);
 		frame.getContentPane().add(telefone_Field);
+		
+		JButton btnAlterar = new JButton("Alterar");
+		btnAlterar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				try {
+					if (!Verificadores.verificarCPF(CPF_Field.getText())) {
+						throw new Exception("CPF ERRADO!");
+					}
+					Paciente p = new Paciente(TelaListP.valorID, nomePac_Field.getText(), endereco_Field.getText(), tipoSang_Field.getText(), CPF_Field.getText(), telefone_Field.getText());
+					UpdatePaciente.update(TelaLogin.con, p);
+					JOptionPane.showMessageDialog(null, "Paciente atualizado!", "Cadastro", JOptionPane.INFORMATION_MESSAGE);
+					TelaListP.valorID = 0;
+					try {
+						TelaListP tlp = new TelaListP();
+						tlp.main(null);
+					} catch (Exception e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+					frame.dispose();
+				} catch(Exception e1){
+					e1.printStackTrace();
+					JOptionPane.showMessageDialog(null, "Algo foi digitado errado!", "Credenciais incorretas", JOptionPane.ERROR_MESSAGE);
+				}
+
+			}
+		});
+		btnAlterar.setBounds(247, 290, 109, 36);
+		frame.getContentPane().add(btnAlterar);
 	}
 }
