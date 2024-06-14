@@ -1,4 +1,4 @@
-package conexao.Dentista;
+package conexao.dentista;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
