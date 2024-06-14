@@ -10,6 +10,8 @@ import javax.swing.JTextField;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JPasswordField;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class TelaCadD {
 
@@ -58,6 +60,11 @@ public class TelaCadD {
 		frame.getContentPane().add(lblNewLabel);
 		
 		btnVoltar = new JButton("Voltar");
+		btnVoltar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				frame.dispose();
+			}
+		});
 		btnVoltar.setBounds(134, 232, 68, 36);
 		frame.getContentPane().add(btnVoltar);
 		
