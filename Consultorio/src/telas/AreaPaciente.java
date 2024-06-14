@@ -66,6 +66,12 @@ public class AreaPaciente {
 		frame.getContentPane().add(btnCadP);
 		
 		btnAlterarP = new JButton("Alterar Paciente");
+		btnAlterarP.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				TelaListP tlp = new TelaListP();
+				tlp.main(null);
+			}
+		});
 		btnAlterarP.setBounds(134, 174, 223, 36);
 		frame.getContentPane().add(btnAlterarP);
 		

@@ -96,6 +96,10 @@ public class TelaCadC {
 		frame.getContentPane().add(lblNewLabel_1_1_1);
 		
 		JButton btnAgendar = new JButton("Agendar");
+		btnAgendar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
 		btnAgendar.setBounds(227, 263, 109, 36);
 		frame.getContentPane().add(btnAgendar);
 		

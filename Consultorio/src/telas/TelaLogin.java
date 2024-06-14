@@ -9,13 +9,25 @@ import java.awt.Font;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 
+import java.sql.Connection;
+import recursos.Paciente;
+import conexao.Conector;
+import conexao.funcionario.ReadFuncionario;
+import conexao.paciente.*;
+import java.util.ArrayList;
+import recursos.Funcionario;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+
 public class TelaLogin {
 
 	private JFrame frame;
-	private JTextField textField;
+	private JTextField login_Field;
 	private JLabel lblSenha;
-	private JTextField textField_1;
-
+	private JTextField senha_Field;
+	private static ArrayList<Funcionario> funcionarios = new ArrayList<>();
+	public static Connection con = null;
+	public static Funcionario f = null;
 	/**
 	 * Launch the application.
 	 */
@@ -23,6 +35,8 @@ public class TelaLogin {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
+					con = Conector.getConecction();
+					funcionarios = ReadFuncionario.read(con);
 					TelaLogin window = new TelaLogin();
 					window.frame.setVisible(true);
 				} catch (Exception e) {
@@ -54,10 +68,10 @@ public class TelaLogin {
 		lblNewLabel.setBounds(134, 11, 247, 36);
 		frame.getContentPane().add(lblNewLabel);
 		
-		textField = new JTextField();
-		textField.setBounds(190, 92, 161, 20);
-		frame.getContentPane().add(textField);
-		textField.setColumns(10);
+		login_Field = new JTextField();
+		login_Field.setBounds(190, 92, 161, 20);
+		frame.getContentPane().add(login_Field);
+		login_Field.setColumns(10);
 		
 		JLabel lblLogin = new JLabel("Login");
 		lblLogin.setFont(new Font("Tahoma", Font.BOLD, 11));
@@ -69,12 +83,27 @@ public class TelaLogin {
 		lblSenha.setBounds(134, 154, 46, 14);
 		frame.getContentPane().add(lblSenha);
 		
-		textField_1 = new JTextField();
-		textField_1.setBounds(190, 151, 161, 20);
-		frame.getContentPane().add(textField_1);
-		textField_1.setColumns(10);
+		senha_Field = new JTextField();
+		senha_Field.setBounds(190, 151, 161, 20);
+		frame.getContentPane().add(senha_Field);
+		senha_Field.setColumns(10);
 		
 		JButton btnEntrar = new JButton("Entrar");
+		btnEntrar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				for (int i = 0; i < funcionarios.size(); i++) {
+					if (funcionarios.get(i).getLogin().equals(login_Field.getText())) {
+						if (funcionarios.get(i).getSenha().equals(senha_Field.getText())) {
+							f = funcionarios.get(i);
+							MenuPrincipal mp = new MenuPrincipal();
+							mp.main(null);
+							frame.dispose();							
+						}
+					}
+				}
+			}
+		});
 		btnEntrar.setBounds(190, 225, 100, 36);
 		frame.getContentPane().add(btnEntrar);
 	}
