@@ -30,16 +30,16 @@ public class ReadConsulta {
 					resultSet2.getString("CPF_Pac"), resultSet2.getString("Telefone"));
 			cons.setPaciente(p);
 			String queryF = "select * from Funcionario where ID_Func = " + resultset.getInt("ID_Func");
-			resultSet2 = statement.executeQuery(queryF);
-			resultSet2.next();
-			Funcionario f = new Funcionario(resultSet2.getInt("ID_Func"), resultSet2.getString("Nome_Func"),
-					resultSet2.getString("Login"), resultSet2.getString("Senha"), resultSet2.getBoolean("Gerente"));
+			ResultSet resultSet3 = statement.executeQuery(queryF);
+			resultSet3.next();
+			Funcionario f = new Funcionario(resultSet3.getInt("ID_Func"), resultSet3.getString("Nome_Func"),
+					resultSet3.getString("Login"), resultSet3.getString("Senha"), resultSet3.getBoolean("Gerente"));
 			cons.setFuncionario(f);
 			String queryD = "select * from Dentista where ID_Dent = " + resultset.getInt("ID_Dent");
-			resultSet2 = statement.executeQuery(queryD);
-			resultSet2.next();
-			Dentista d = new Dentista(resultSet2.getInt("ID_Dent"), resultSet2.getString("Nome_Dent"), 
-			resultSet2.getString("CRM"), resultSet2.getString("Especialidade"));
+			ResultSet resultSet4 = statement.executeQuery(queryD);
+			resultSet4.next();
+			Dentista d = new Dentista(resultSet4.getInt("ID_Dent"), resultSet4.getString("Nome_Dent"), 
+			resultSet4.getString("CRM"), resultSet4.getString("Especialidade"));
 			cons.setDentista(d);
 		}
 		return consultas;
