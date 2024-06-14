@@ -20,6 +20,9 @@ public class Funcionario {
 		this.senha = senha;
 		this.gerente = gerente;
 	}
+	public Funcionario(int id_Func) {
+		this.id_Func = id_Func;
+	}
 
 	public int getId_Func() {
 		return id_Func;
