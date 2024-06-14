@@ -4,7 +4,7 @@ import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 
-public class TelaAltD {
+public class TelaListC {
 
 	private JFrame frame;
 
@@ -15,7 +15,7 @@ public class TelaAltD {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					TelaAltD window = new TelaAltD();
+					TelaListC window = new TelaListC();
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -27,7 +27,7 @@ public class TelaAltD {
 	/**
 	 * Create the application.
 	 */
-	public TelaAltD() {
+	public TelaListC() {
 		initialize();
 	}
 

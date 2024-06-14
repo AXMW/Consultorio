@@ -21,7 +21,7 @@ public class AreaFuncionario {
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
+	public static void main(String[] args){
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -69,9 +69,13 @@ public class AreaFuncionario {
 		btnAlterarF = new JButton("Alterar Funcionário");
 		btnAlterarF.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				TelaListF tlf = new TelaListF();
-				tlf.main(null);
-
+				try {
+					TelaListF tlf = new TelaListF();
+					tlf.main(null);
+				} catch (Exception e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 			}
 		});
 		btnAlterarF.setBounds(134, 208, 223, 36);
