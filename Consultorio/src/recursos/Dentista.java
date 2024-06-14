@@ -1,13 +1,13 @@
 package recursos;
-import java.util.ArrayList;
+
 
 public class Dentista {
 	private int id_Dent;
 	private String nome_Dent;
 	private String CRM;
-	private ArrayList<String> especialidade;
+	private String especialidade;
 	
-	public Dentista(int id_Dent, String nome_Dent, String CRM, ArrayList<String> especialidade) {
+	public Dentista(int id_Dent, String nome_Dent, String CRM, String especialidade) {
 		this.id_Dent = id_Dent;
 		this.nome_Dent = nome_Dent;
 		this.CRM = CRM;
@@ -38,15 +38,11 @@ public class Dentista {
 		CRM = cRM;
 	}
 
-	public ArrayList<String> getEspecialidade() {
+	public String getEspecialidade() {
 		return especialidade;
 	}
 
-	public void setEspecialidade(ArrayList<String> especialidade) {
+	public void setEspecialidade(String especialidade) {
 		this.especialidade = especialidade;
-	}
-	
-	public void adicionarEspecialidade(String espec) {
-		this.especialidade.add(espec);
 	}
 }

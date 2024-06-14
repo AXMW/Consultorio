@@ -1,5 +1,4 @@
 package recursos;
-import java.util.ArrayList;
 
 public class Paciente {
 	private int id_Pac;
@@ -7,10 +6,17 @@ public class Paciente {
 	private String endereco_Pac;
 	private String tipo_Sanguineo;
 	private String CPF_Pac;
-	private ArrayList<String> telefone;
+	private String telefone;
 	
-	public Paciente(int id_Pac, String nome_Pac, String endereco_Pac, String tipo_Sanguineo, String CPF_Pac, ArrayList<String> telefone) {
+	public Paciente(int id_Pac, String nome_Pac, String endereco_Pac, String tipo_Sanguineo, String CPF_Pac, String telefone) {
 		this.id_Pac = id_Pac;
+		this.nome_Pac = nome_Pac;
+		this.endereco_Pac = endereco_Pac;
+		this.tipo_Sanguineo = tipo_Sanguineo;
+		this.CPF_Pac = CPF_Pac;
+		this.telefone = telefone;
+	}
+	public Paciente(String nome_Pac, String endereco_Pac, String tipo_Sanguineo, String CPF_Pac, String telefone) {
 		this.nome_Pac = nome_Pac;
 		this.endereco_Pac = endereco_Pac;
 		this.tipo_Sanguineo = tipo_Sanguineo;
@@ -58,15 +64,12 @@ public class Paciente {
 		CPF_Pac = cPF_Pac;
 	}
 
-	public ArrayList<String> getTelefone() {
+	public String getTelefone() {
 		return telefone;
 	}
 
-	public void setTelefone(ArrayList<String> telefone) {
+	public void setTelefone(String telefone) {
 		this.telefone = telefone;
 	}
 	
-	public void adicionarTelefone(String numero) {
-		this.telefone.add(numero);
-	}
 }
