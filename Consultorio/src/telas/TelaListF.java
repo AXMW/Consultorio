@@ -35,7 +35,6 @@ public class TelaListF {
 	 */
 	public static void main(String[] args) throws Exception{
 		
-		CreateFuncionario.create(TelaLogin.con, f);
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
