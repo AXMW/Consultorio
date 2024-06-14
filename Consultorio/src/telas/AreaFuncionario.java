@@ -69,6 +69,9 @@ public class AreaFuncionario {
 		btnAlterarF = new JButton("Alterar Funcionário");
 		btnAlterarF.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				TelaListF tlf = new TelaListF();
+				tlf.main(null);
+
 			}
 		});
 		btnAlterarF.setBounds(134, 208, 223, 36);

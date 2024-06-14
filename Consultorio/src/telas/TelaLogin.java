@@ -5,6 +5,8 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import java.awt.Color;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.Font;
 import javax.swing.JTextField;
 import javax.swing.JButton;
@@ -98,10 +100,12 @@ public class TelaLogin {
 							f = funcionarios.get(i);
 							MenuPrincipal mp = new MenuPrincipal();
 							mp.main(null);
-							frame.dispose();							
+							frame.dispose();
+							break;
 						}
 					}
 				}
+				JOptionPane.showMessageDialog(null, "O Login e/ou a senha estão errados!", "Credenciais incorretas", JOptionPane.ERROR_MESSAGE);
 			}
 		});
 		btnEntrar.setBounds(190, 225, 100, 36);
