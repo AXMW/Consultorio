@@ -108,16 +108,21 @@ public class TelaCadC {
 		btnAgendar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
-					Paciente p = ReadPaciente.read(TelaLogin.con, CPFPac_Field.getText());
-					Dentista d = ReadDentista.read(TelaLogin.con, CRMDent_Field.getText());
-					String tipoConsulta = tipoCons_Field.getText();
-					String data = data_Field.getText();
-					if(Verificadores.verificarData(data)) {
-						Consulta c = new Consulta(tipoConsulta, data, p, TelaLogin.f, d);
-						CreateConsulta.create(TelaLogin.con, c);
-						JOptionPane.showMessageDialog(null, "Cadastro realizado com sucesso");
+					if(CPFPac_Field.getText().isBlank() || CRMDent_Field.getText().isBlank() || tipoCons_Field.getText().isBlank() || data_Field.getText().isBlank()) {
+						JOptionPane.showMessageDialog(null, "Algum campo esta vazio");
 					} else {
-						JOptionPane.showMessageDialog(null, "Formato de data incorreto, o formato correto é:'YYYY-MM-DD HH:MM:SS'");
+						Paciente p = ReadPaciente.read(TelaLogin.con, CPFPac_Field.getText());
+						Dentista d = ReadDentista.read(TelaLogin.con, CRMDent_Field.getText());
+						String tipoConsulta = tipoCons_Field.getText();
+						String data = data_Field.getText();
+						
+						if(Verificadores.verificarData(data)) {
+							Consulta c = new Consulta(tipoConsulta, data, p, TelaLogin.f, d);
+							CreateConsulta.create(TelaLogin.con, c);
+							JOptionPane.showMessageDialog(null, "Cadastro realizado com sucesso");
+						} else {
+							JOptionPane.showMessageDialog(null, "Formato de data incorreto, o formato correto é:'YYYY-MM-DD HH:MM:SS'");
+						}
 					}
 					
 				} catch(Exception ex) {
