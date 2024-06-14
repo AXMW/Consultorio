@@ -8,13 +8,14 @@ import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.JTextField;
 import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
-public class TelaLogin {
+public class AreaPaciente {
 
 	private JFrame frame;
-	private JTextField textField;
-	private JLabel lblSenha;
-	private JTextField textField_1;
+	private JButton btnAlterarP;
+	private JButton btnVoltar;
 
 	/**
 	 * Launch the application.
@@ -23,7 +24,7 @@ public class TelaLogin {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					TelaLogin window = new TelaLogin();
+					AreaPaciente window = new AreaPaciente();
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -35,7 +36,7 @@ public class TelaLogin {
 	/**
 	 * Create the application.
 	 */
-	public TelaLogin() {
+	public AreaPaciente() {
 		initialize();
 	}
 
@@ -54,28 +55,27 @@ public class TelaLogin {
 		lblNewLabel.setBounds(134, 11, 247, 36);
 		frame.getContentPane().add(lblNewLabel);
 		
-		textField = new JTextField();
-		textField.setBounds(190, 92, 161, 20);
-		frame.getContentPane().add(textField);
-		textField.setColumns(10);
+		JButton btnCadP = new JButton("Cadastrar Paciente");
+		btnCadP.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				TelaCadP tcp = new TelaCadP();
+				tcp.main(null);
+			}
+		});
+		btnCadP.setBounds(134, 111, 223, 36);
+		frame.getContentPane().add(btnCadP);
 		
-		JLabel lblLogin = new JLabel("Login");
-		lblLogin.setFont(new Font("Tahoma", Font.BOLD, 11));
-		lblLogin.setBounds(134, 95, 46, 14);
-		frame.getContentPane().add(lblLogin);
+		btnAlterarP = new JButton("Alterar Paciente");
+		btnAlterarP.setBounds(134, 174, 223, 36);
+		frame.getContentPane().add(btnAlterarP);
 		
-		lblSenha = new JLabel("Senha");
-		lblSenha.setFont(new Font("Tahoma", Font.BOLD, 11));
-		lblSenha.setBounds(134, 154, 46, 14);
-		frame.getContentPane().add(lblSenha);
-		
-		textField_1 = new JTextField();
-		textField_1.setBounds(190, 151, 161, 20);
-		frame.getContentPane().add(textField_1);
-		textField_1.setColumns(10);
-		
-		JButton btnEntrar = new JButton("Entrar");
-		btnEntrar.setBounds(190, 225, 100, 36);
-		frame.getContentPane().add(btnEntrar);
+		btnVoltar = new JButton("Voltar");
+		btnVoltar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				frame.dispose();
+			}
+		});
+		btnVoltar.setBounds(209, 241, 68, 36);
+		frame.getContentPane().add(btnVoltar);
 	}
 }
