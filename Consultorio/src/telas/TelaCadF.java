@@ -114,17 +114,17 @@ public class TelaCadF {
 						String senha = new String(senhaFunc_Field.getPassword());
 						
 						if (nomeFunc_Field.getText().isBlank() || loginFunc_Field.getText().isBlank() || senha.isBlank()) {
-							throw new Exception("Todos os Campos tem que estar preenchidos!");
+							JOptionPane.showMessageDialog(null, "Algum campo esta vazio", "Credenciais incorretas", JOptionPane.ERROR_MESSAGE);
+						}else {
+							boolean gerente = false;
+							
+							if (checkboxGerente.isSelected()) {
+								gerente = true;
+							}
+							Funcionario f = new Funcionario(nomeFunc_Field.getText(), loginFunc_Field.getText(), senha, gerente);
+							CreateFuncionario.create(TelaLogin.con, f);
+							JOptionPane.showMessageDialog(null, "Funcionário Cadastrado!", "Cadastro", JOptionPane.INFORMATION_MESSAGE);
 						}
-						
-						boolean gerente = false;
-						
-						if (checkboxGerente.isSelected()) {
-							gerente = true;
-						}
-						Funcionario f = new Funcionario(nomeFunc_Field.getText(), loginFunc_Field.getText(), senha, gerente);
-						CreateFuncionario.create(TelaLogin.con, f);
-						JOptionPane.showMessageDialog(null, "Funcionário Cadastrado!", "Cadastro", JOptionPane.INFORMATION_MESSAGE);
 					}else {
 						JOptionPane.showMessageDialog(null, "É necessário ter cargo de gerente para cadastrar!", "Cadastro", JOptionPane.ERROR_MESSAGE);
 					}
