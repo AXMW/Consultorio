@@ -17,7 +17,7 @@ public class ReadConsulta {
 			Paciente p = new Paciente(resultset.getInt("ID_Pac"));
 			Funcionario f = new Funcionario(resultset.getInt("ID_Func"));
 			Dentista d = new Dentista(resultset.getInt("ID_Dent"));
-			Consulta c = new Consulta(resultset.getInt("ID_Cons"), resultset.getString("Tipo_Consulta"), 
+			Consulta c = new Consulta(resultset.getInt("ID_Consulta"), resultset.getString("Tipo_Consulta"), 
 					resultset.getString("Data_Consulta"), p, 
 					f, d);
 			consultas.add(c);
