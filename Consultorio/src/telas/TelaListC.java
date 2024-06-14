@@ -113,7 +113,7 @@ public class TelaListC {
 			}
 		});
 		btnNewButton.setBackground(new Color(149, 149, 255));
-		btnNewButton.setBounds(65, 255, 89, 23);
+		btnNewButton.setBounds(112, 255, 89, 23);
 		frame.getContentPane().add(btnNewButton);
 		
 		JButton btnDeletar = new JButton("Deletar");
@@ -158,12 +158,7 @@ public class TelaListC {
 			}
 		});
 		btnDeletar.setBackground(new Color(149, 149, 255));
-		btnDeletar.setBounds(164, 255, 89, 23);
+		btnDeletar.setBounds(240, 255, 89, 23);
 		frame.getContentPane().add(btnDeletar);
-		
-		JButton btnAlterar = new JButton("Alterar");
-		btnAlterar.setBackground(new Color(149, 149, 255));
-		btnAlterar.setBounds(263, 255, 89, 23);
-		frame.getContentPane().add(btnAlterar);
 	}
 }
