@@ -8,9 +8,9 @@ import recursos.Consulta;
 public class CreateConsulta {
 	public static void create(Connection con, Consulta consulta) throws Exception {
 		Statement statement = con.createStatement();
-		String query = "insert into consulta (Nome_Dent, CRM, Especialidade) "
-				+ "values ('"  + "', '" 
-				+ "', '"  + "');";
+		String query = "insert into consulta (Tipo_Consulta, Data_Consulta, ID_Pac, ID_Func, ID_Dent) "
+				+ "values ('"  + consulta.getTipo_Consulta() + "', '" + consulta.getData_Consulta()
+				+ "', '"  + consulta.getPaciente().getId_Pac() + "'" + "');";
 		statement.executeUpdate(query);
 	}
 }
