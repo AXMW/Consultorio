@@ -101,6 +101,11 @@ public class AtualizP {
 		nomePac_Field.setColumns(10);
 		
 		CPF_Field = new JTextField();
+		for(Paciente itemP: pac){
+			if(itemP.getId_Pac() == TelaListP.valorID) {
+				CPF_Field.setText(itemP.getCPF_Pac());
+			}
+		}
 		CPF_Field.setBounds(215, 123, 191, 20);
 		frame.getContentPane().add(CPF_Field);
 		CPF_Field.setColumns(10);
@@ -127,9 +132,18 @@ public class AtualizP {
 					if (!Verificadores.verificarCPF(CPF_Field.getText())) {
 						throw new Exception("CPF ERRADO!");
 					}
-					Paciente p = new Paciente(nomePac_Field.getText(), endereco_Field.getText(), tipoSang_Field.getText(), CPF_Field.getText(), telefone_Field.getText());
-					CreatePaciente.create(TelaLogin.con, p);
-					JOptionPane.showMessageDialog(null, "Paciente Cadastrado!", "Cadastro", JOptionPane.INFORMATION_MESSAGE);
+					Paciente p = new Paciente(TelaListP.valorID,nomePac_Field.getText(), endereco_Field.getText(), tipoSang_Field.getText(), CPF_Field.getText(), telefone_Field.getText());
+					UpdatePaciente.update(TelaLogin.con, p);
+					JOptionPane.showMessageDialog(null, "Paciente atualizado!", "Cadastro", JOptionPane.INFORMATION_MESSAGE);
+					TelaListP.valorID = 0;
+					try {
+						TelaListP tlp = new TelaListP();
+						tlp.main(null);
+					} catch (Exception e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+					frame.dispose();
 				} catch(Exception e1){
 					e1.printStackTrace();
 					JOptionPane.showMessageDialog(null, "Algo foi digitado errado!", "Credenciais incorretas", JOptionPane.ERROR_MESSAGE);
@@ -151,16 +165,31 @@ public class AtualizP {
 		frame.getContentPane().add(lblNewLabel_1_1_3);
 		
 		tipoSang_Field = new JTextField();
+		for(Paciente itemP: pac){
+			if(itemP.getId_Pac() == TelaListP.valorID) {
+				tipoSang_Field.setText(itemP.getTipo_Sanguineo());
+			}
+		}
 		tipoSang_Field.setColumns(10);
 		tipoSang_Field.setBounds(215, 168, 191, 20);
 		frame.getContentPane().add(tipoSang_Field);
 		
 		endereco_Field = new JTextField();
+		for(Paciente itemP: pac){
+			if(itemP.getId_Pac() == TelaListP.valorID) {
+				endereco_Field.setText(itemP.getEndereco_Pac());
+			}
+		}
 		endereco_Field.setColumns(10);
 		endereco_Field.setBounds(215, 205, 191, 20);
 		frame.getContentPane().add(endereco_Field);
 		
 		telefone_Field = new JTextField();
+		for(Paciente itemP: pac){
+			if(itemP.getId_Pac() == TelaListP.valorID) {
+				telefone_Field.setText(itemP.getTelefone());
+			}
+		}
 		telefone_Field.setColumns(10);
 		telefone_Field.setBounds(215, 247, 191, 20);
 		frame.getContentPane().add(telefone_Field);

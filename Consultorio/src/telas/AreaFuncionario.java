@@ -63,7 +63,7 @@ public class AreaFuncionario {
 				tcf.main(null);
 			}
 		});
-		btnCadF.setBounds(134, 81, 223, 36);
+		btnCadF.setBounds(134, 58, 223, 36);
 		frame.getContentPane().add(btnCadF);
 		
 		btnAlterarF = new JButton("Alterar Funcionário");
@@ -78,7 +78,7 @@ public class AreaFuncionario {
 				}
 			}
 		});
-		btnAlterarF.setBounds(134, 208, 223, 36);
+		btnAlterarF.setBounds(134, 166, 223, 36);
 		frame.getContentPane().add(btnAlterarF);
 		
 		btnVoltar = new JButton("Voltar");
@@ -97,7 +97,22 @@ public class AreaFuncionario {
 				tcd.main(null);
 			}
 		});
-		btnCadD.setBounds(134, 144, 223, 36);
+		btnCadD.setBounds(134, 113, 223, 36);
 		frame.getContentPane().add(btnCadD);
+		
+		JButton btnAlterarD = new JButton("Alterar Dentista");
+		btnAlterarD.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				try {
+					TelaListD tld = new TelaListD();
+					tld.main(null);
+				} catch (Exception e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+			}
+		});
+		btnAlterarD.setBounds(134, 221, 223, 36);
+		frame.getContentPane().add(btnAlterarD);
 	}
 }
