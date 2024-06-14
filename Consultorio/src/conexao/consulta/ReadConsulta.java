@@ -36,7 +36,6 @@ public class ReadConsulta {
 					resultset.getString("Data_Consulta"), p, 
 					f, d);
 			consultas.add(c);
-			resultSet2.close();
 		}
 		resultset.close();
 		return consultas;
