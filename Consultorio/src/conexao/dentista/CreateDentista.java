@@ -1,4 +1,4 @@
-package conexao.Dentista;
+package conexao.dentista;
 import recursos.Dentista;
 import java.sql.Connection;
 import java.sql.Statement;
