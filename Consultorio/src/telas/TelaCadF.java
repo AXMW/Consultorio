@@ -5,6 +5,8 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import java.awt.Color;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.Font;
 import javax.swing.JTextField;
 import javax.swing.JButton;
@@ -12,6 +14,8 @@ import javax.swing.JCheckBox;
 import javax.swing.JPasswordField;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import recursos.Funcionario;
+import conexao.funcionario.CreateFuncionario;
 
 public class TelaCadF {
 
@@ -97,12 +101,37 @@ public class TelaCadF {
 		lblNewLabel_1_1_1.setBounds(152, 169, 50, 16);
 		frame.getContentPane().add(lblNewLabel_1_1_1);
 		
-		JButton btnCadastrar = new JButton("Cadastrar");
-		btnCadastrar.setBounds(228, 274, 109, 36);
-		frame.getContentPane().add(btnCadastrar);
-		
 		senhaFunc_Field = new JPasswordField();
 		senhaFunc_Field.setBounds(215, 168, 191, 20);
 		frame.getContentPane().add(senhaFunc_Field);
+		
+		JButton btnCadastrar = new JButton("Cadastrar");
+		btnCadastrar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				try {
+					if (TelaLogin.f.isGerente()) {
+						String senha = new String(senhaFunc_Field.getPassword());
+						
+						boolean gerente = false;
+						
+						if (checkboxGerente.isSelected()) {
+							gerente = true;
+						}
+						Funcionario f = new Funcionario(nomeFunc_Field.getText(), loginFunc_Field.getText(), senha, gerente);
+						CreateFuncionario.create(TelaLogin.con, f);
+						JOptionPane.showMessageDialog(null, "Funcionário Cadastrado!", "Cadastro", JOptionPane.INFORMATION_MESSAGE);
+					}else {
+						JOptionPane.showMessageDialog(null, "É necessário ter cargo de gerente para cadastrar!", "Cadastro", JOptionPane.ERROR_MESSAGE);
+					}
+						
+				}catch(Exception e1){
+					e1.printStackTrace();
+					JOptionPane.showMessageDialog(null, "Algo foi digitado errado!", "Credenciais incorretas", JOptionPane.ERROR_MESSAGE);
+				}
+			}
+		});
+		btnCadastrar.setBounds(228, 274, 109, 36);
+		frame.getContentPane().add(btnCadastrar);
+		
 	}
 }

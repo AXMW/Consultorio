@@ -13,14 +13,10 @@ public class Verificadores {
 		//Verificador 1
 		long cpf = Long.parseLong(cpfStr.substring(0, 9));
 		
-		System.out.println(cpf);
-		
 		for(int i = 9; cpf != 0; i--) {
 			valida += (cpf % 10)*i;
-			System.out.println((cpf % 10)*i);
 			cpf /= 10;
 		}
-		System.out.println(valida);
 		
 		valida = valida % 11;
 		if (valida == 10){
@@ -35,10 +31,8 @@ public class Verificadores {
 		cpf = Long.parseLong(cpfStr.substring(0, 10));
 		for(int i = 9; cpf != 0; i--) {
 			valida += (cpf % 10)*i;
-			System.out.println((cpf % 10)*i);
 			cpf /= 10;
 		}
-		System.out.println(valida);
 
 		valida = valida % 11;
 		if (valida == 10){

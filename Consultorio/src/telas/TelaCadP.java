@@ -16,6 +16,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import recursos.Paciente;
 import conexao.paciente.CreatePaciente;
+import util.Verificadores;
 
 public class TelaCadP {
 
@@ -104,8 +105,11 @@ public class TelaCadP {
 		JButton btnCadastrar = new JButton("Cadastrar");
 		btnCadastrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Paciente p = new Paciente(nomePac_Field.getText(), endereco_Field.getText(), tipoSang_Field.getText(), CPF_Field.getText(), telefone_Field.getText());
 				try {
+					if (!Verificadores.verificarCPF(CPF_Field.getText())) {
+						throw new Exception("CPF ERRADO!");
+					}
+					Paciente p = new Paciente(nomePac_Field.getText(), endereco_Field.getText(), tipoSang_Field.getText(), CPF_Field.getText(), telefone_Field.getText());
 					CreatePaciente.create(TelaLogin.con, p);
 				} catch(Exception e1){
 					e1.printStackTrace();

@@ -6,6 +6,7 @@ import javax.swing.JFrame;
 import java.awt.Color;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JPasswordField;
 
 import java.awt.Font;
 import javax.swing.JTextField;
@@ -26,7 +27,7 @@ public class TelaLogin {
 	private JFrame frame;
 	private JTextField login_Field;
 	private JLabel lblSenha;
-	private JTextField senha_Field;
+	private JPasswordField senha_Field;
 	private static ArrayList<Funcionario> funcionarios = new ArrayList<>();
 	public static Connection con = null;
 	public static Funcionario f = null;
@@ -85,7 +86,7 @@ public class TelaLogin {
 		lblSenha.setBounds(134, 154, 46, 14);
 		frame.getContentPane().add(lblSenha);
 		
-		senha_Field = new JTextField();
+		senha_Field = new JPasswordField();
 		senha_Field.setBounds(190, 151, 161, 20);
 		frame.getContentPane().add(senha_Field);
 		senha_Field.setColumns(10);
@@ -95,10 +96,10 @@ public class TelaLogin {
 			public void actionPerformed(ActionEvent e) {
 				
 				boolean entrar = false;
-				
+				String senha = new String(senha_Field.getPassword());
 				for (int i = 0; i < funcionarios.size(); i++) {
 					if (funcionarios.get(i).getLogin().equals(login_Field.getText())) {
-						if (funcionarios.get(i).getSenha().equals(senha_Field.getText())) {
+						if (funcionarios.get(i).getSenha().equals(senha)) {
 							f = funcionarios.get(i);
 							entrar = true;
 							break;
