@@ -37,7 +37,6 @@ public class ReadConsulta {
 					f, d);
 			consultas.add(c);
 		}
-		resultset.close();
 		return consultas;
 	}
 }
