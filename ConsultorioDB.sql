@@ -14,7 +14,7 @@ CREATE TABLE Paciente (
 CREATE TABLE Funcionario (
 	ID_Func INT NOT NULL AUTO_INCREMENT,
     Nome_Func VARCHAR(100),
-    Login VARCHAR(8),
+    Login VARCHAR(20),
     Senha VARCHAR(12),
     Gerente BOOLEAN,
     PRIMARY KEY(ID_Func)
@@ -42,3 +42,5 @@ CREATE TABLE Consulta (
 
 INSERT INTO Funcionario(Nome_Func, Login, Senha, Gerente)
 VALUES ('Admin', 'Admin', 'Admin', true);
+
+SELECT * FROM DENTISTA;
