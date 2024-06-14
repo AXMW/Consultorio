@@ -5,6 +5,8 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import java.awt.Color;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.Font;
 import javax.swing.JTextField;
 import javax.swing.JButton;
@@ -107,6 +109,7 @@ public class TelaCadP {
 					CreatePaciente.create(TelaLogin.con, p);
 				} catch(Exception e1){
 					e1.printStackTrace();
+					JOptionPane.showMessageDialog(null, "Algo foi digitado errado!", "Credenciais incorretas", JOptionPane.ERROR_MESSAGE);
 				}
 
 			}
