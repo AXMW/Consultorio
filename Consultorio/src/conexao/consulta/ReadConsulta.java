@@ -29,14 +29,14 @@ public class ReadConsulta {
 					resultSet2.getString("Endereco_Pac"), resultSet2.getString("Tipo_Sanguineo"),
 					resultSet2.getString("CPF_Pac"), resultSet2.getString("Telefone"));
 			cons.setPaciente(p);
-			queryP = "select * from Funcionario where ID_Func = " + resultset.getInt("ID_Func");
-			resultSet2 = statement.executeQuery(queryP);
+			String queryF = "select * from Funcionario where ID_Func = " + resultset.getInt("ID_Func");
+			resultSet2 = statement.executeQuery(queryF);
 			resultSet2.next();
 			Funcionario f = new Funcionario(resultSet2.getInt("ID_Func"), resultSet2.getString("Nome_Func"),
 					resultSet2.getString("Login"), resultSet2.getString("Senha"), resultSet2.getBoolean("Gerente"));
 			cons.setFuncionario(f);
-			queryP = "select * from Dentista where ID_Dent = " + resultset.getInt("ID_Dent");
-			resultSet2 = statement.executeQuery(queryP);
+			String queryD = "select * from Dentista where ID_Dent = " + resultset.getInt("ID_Dent");
+			resultSet2 = statement.executeQuery(queryD);
 			resultSet2.next();
 			Dentista d = new Dentista(resultSet2.getInt("ID_Dent"), resultSet2.getString("Nome_Dent"), 
 			resultSet2.getString("CRM"), resultSet2.getString("Especialidade"));
