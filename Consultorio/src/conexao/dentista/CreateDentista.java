@@ -8,7 +8,7 @@ public class CreateDentista {
 		Statement statement = con.createStatement();
 		String query = "insert into dentista (Nome_Dent, CRM, Especialidade) "
 				+ "values ('" + dentista.getNome_Dent() + "', '" + dentista.getCRM()
-				+ "', '" + dentista.getEspecialidade() + ");";
+				+ "', '" + dentista.getEspecialidade() + "');";
 		statement.executeUpdate(query);
 	}
 }

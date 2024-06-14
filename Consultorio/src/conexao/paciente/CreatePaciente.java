@@ -9,7 +9,7 @@ public class CreatePaciente {
 		Statement statement = con.createStatement();
 		String query = "insert into paciente (Nome_Pac, Endereco_Pac, Tipo_Sanguineo, CPF_Pac, Telefone) "
 				+ "values ('" + paciente.getNome_Pac() + "', '" + paciente.getEndereco_Pac() + "', '"
-				+ paciente.getTipo_Sanguineo() + "', '" + paciente.getCPF_Pac() + "', " + paciente.getTelefone() + ");";
+				+ paciente.getTipo_Sanguineo() + "', '" + paciente.getCPF_Pac() + "', '" + paciente.getTelefone() + "');";
 		statement.executeUpdate(query);
 	}
 }
