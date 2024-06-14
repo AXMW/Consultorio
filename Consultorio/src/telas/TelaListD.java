@@ -3,8 +3,6 @@ package telas;
 import java.awt.EventQueue;
 import java.util.ArrayList;
 
-import javax.swing.JFrame;
-import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.*;
 import java.awt.event.MouseAdapter;
@@ -12,9 +10,8 @@ import java.awt.event.MouseEvent;
 
 import conexao.dentista.DeleteDentista;
 import conexao.dentista.ReadDentista;
-import javax.swing.JScrollPane;
+
 import java.awt.Color;
-import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import recursos.Dentista;
@@ -162,6 +159,23 @@ public class TelaListD {
 		frame.getContentPane().add(btnDeletar);
 		
 		JButton btnAlterar = new JButton("Alterar");
+		btnAlterar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if(valorID !=0) {
+					try {
+						AtualizD ad = new AtualizD();
+						ad.main(null);
+						frame.dispose();
+					} catch (Exception e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+				}
+				else {
+					JOptionPane.showMessageDialog(btnDeletar, "Selecione o dentista que deseja alterar","Mensagem", 2);
+				}
+			}
+		});
 		btnAlterar.setBackground(new Color(149, 149, 255));
 		btnAlterar.setBounds(263, 255, 89, 23);
 		frame.getContentPane().add(btnAlterar);
