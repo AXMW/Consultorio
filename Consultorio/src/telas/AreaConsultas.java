@@ -68,7 +68,13 @@ public class AreaConsultas {
 		btnAlterarC = new JButton("Alterar Consulta");
 		btnAlterarC.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				TelaListC tlc = new TelaListC();
+				try {
+					TelaListC tlc = new TelaListC();
+					tlc.main(null);
+				} catch (Exception e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 			}
 		});
 		btnAlterarC.setBounds(134, 174, 223, 36);

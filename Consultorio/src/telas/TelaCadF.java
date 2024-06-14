@@ -110,7 +110,12 @@ public class TelaCadF {
 			public void actionPerformed(ActionEvent e) {
 				try {
 					if (TelaLogin.f.isGerente()) {
+						
 						String senha = new String(senhaFunc_Field.getPassword());
+						
+						if (nomeFunc_Field.getText().isBlank() || loginFunc_Field.getText().isBlank() || senha.isBlank()) {
+							throw new Exception("Todos os Campos tem que estar preenchidos!");
+						}
 						
 						boolean gerente = false;
 						

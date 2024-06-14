@@ -144,24 +144,28 @@ public class AtualizF {
 		btnCadastrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
-						boolean gerente = false;
-						
-						if (checkboxGerente.isSelected()) {
-							gerente = true;
-						}
-						Funcionario f = new Funcionario(TelaListF.valorID, nomeFunc_Field.getText(), loginFunc_Field.getText(), senhaFunc_Field.getText(), gerente);
-						UpdateFuncionario.update(TelaLogin.con, f);
-						JOptionPane.showMessageDialog(null, "Funcionário atualizado!", "Atualização", JOptionPane.INFORMATION_MESSAGE);
-						TelaListF.valorID = 0;
-						try {
-							TelaListF tlf = new TelaListF();
-							tlf.main(null);
-						} catch (Exception e1) {
-							// TODO Auto-generated catch block
-							e1.printStackTrace();
-						}
-						frame.dispose();
-						
+					if (nomeFunc_Field.getText().isBlank() || loginFunc_Field.getText().isBlank() || senhaFunc_Field.getText().isBlank()) {
+						throw new Exception("Todos os Campos tem que estar preenchidos!");
+					}
+					
+					boolean gerente = false;
+					
+					if (checkboxGerente.isSelected()) {
+						gerente = true;
+					}
+					Funcionario f = new Funcionario(TelaListF.valorID, nomeFunc_Field.getText(), loginFunc_Field.getText(), senhaFunc_Field.getText(), gerente);
+					UpdateFuncionario.update(TelaLogin.con, f);
+					JOptionPane.showMessageDialog(null, "Funcionário atualizado!", "Atualização", JOptionPane.INFORMATION_MESSAGE);
+					TelaListF.valorID = 0;
+					try {
+						TelaListF tlf = new TelaListF();
+						tlf.main(null);
+					} catch (Exception e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+					frame.dispose();
+					
 					
 				}catch(Exception e1){
 					e1.printStackTrace();
