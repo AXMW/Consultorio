@@ -50,4 +50,38 @@ public class Verificadores {
 		
 		return true;
 	}
+	
+	public static boolean verificarData(String data) {
+		
+		String[] vet = data.split(" ");
+		
+		data = vet[0];
+		String horario = vet[1];
+		
+		vet = data.split("/");
+		
+		int dia = Integer.parseInt(vet[0]);
+		int mes = Integer.parseInt(vet[1]);
+		int ano = Integer.parseInt(vet[2]);
+		
+		if (ano < 1000 || ano > 3000 || mes < 1 || mes > 12 || dia < 1 || dia > 31) {
+			return false;
+		}
+		if ((mes == 4 || mes == 6 || mes == 9 || mes == 11) && (dia > 30)) {
+			return false;
+		}
+		if (mes == 2 && dia > 29) {
+			return false;
+		}
+		
+		vet = horario.split(":");
+		int hora = Integer.parseInt(vet[0]);
+		int minutos = Integer.parseInt(vet[1]);
+		
+		if (hora < 0 || hora > 23 || minutos < 0 || minutos > 59) {
+			return false;
+		}
+		
+		return true;
+	}
 }
