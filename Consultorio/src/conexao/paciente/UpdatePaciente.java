@@ -8,7 +8,7 @@ public class UpdatePaciente {
 		Statement statement = con.createStatement();
 		String query = "update paciente set Nome_Pac = '" + paciente.getNome_Pac() + "', Endereco_Pac = '"
 				+ paciente.getEndereco_Pac() + "', Tipo_Sanguineo = '" + paciente.getTipo_Sanguineo() + 
-				"', CPF = '" + paciente.getCPF_Pac() + "' where ID_Pac = " + paciente.getId_Pac() +";";
+				"', CPF_Pac = '" + paciente.getCPF_Pac() + "' where ID_Pac = " + paciente.getId_Pac() +";";
 		statement.executeUpdate(query);
 		
 	}
