@@ -69,7 +69,7 @@ public class TelaAltF {
 		table = new JTable();
 		DefaultTableModel model = new DefaultTableModel();
 		String[] column = {"Origem", "Usuário", "Senha"};
-		final String[] row = new String[3];
+		final String[] row = new String[4];
 		model.setColumnIdentifiers(column);
 		scrollPane.setViewportView(table);
 		table.setModel(model);
@@ -77,7 +77,7 @@ public class TelaAltF {
 			row[0] = String.valueOf(itemF.getId_Func());
 			row[1] = itemF.getNome_Func();
 			row[2] = itemF.getLogin();
-			row[4] = itemF.getSenha();
+			row[3] = itemF.getSenha();
 			model.addRow(row);
 		}
 		
