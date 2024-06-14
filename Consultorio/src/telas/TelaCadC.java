@@ -109,7 +109,7 @@ public class TelaCadC {
 			public void actionPerformed(ActionEvent e) {
 				try {
 					if(CPFPac_Field.getText().isBlank() || CRMDent_Field.getText().isBlank() || tipoCons_Field.getText().isBlank() || data_Field.getText().isBlank()) {
-						JOptionPane.showMessageDialog(null, "Algum campo esta vazio");
+						JOptionPane.showMessageDialog(null, "Algum campo esta vazio", "Credenciais incorretas", JOptionPane.ERROR_MESSAGE);
 					} else {
 						Paciente p = ReadPaciente.read(TelaLogin.con, CPFPac_Field.getText());
 						Dentista d = ReadDentista.read(TelaLogin.con, CRMDent_Field.getText());
