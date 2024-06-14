@@ -115,6 +115,7 @@ public class TelaCadC {
 					if(Verificadores.verificarData(data)) {
 						Consulta c = new Consulta(tipoConsulta, data, p, TelaLogin.f, d);
 						CreateConsulta.create(TelaLogin.con, c);
+						JOptionPane.showMessageDialog(null, "Cadastro realizado com sucesso");
 					} else {
 						JOptionPane.showMessageDialog(null, "Formato de data incorreto, o formato correto é:'YYYY-MM-DD HH:MM:SS'");
 					}
