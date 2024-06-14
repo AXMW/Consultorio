@@ -14,6 +14,12 @@ public class Funcionario {
 		this.senha = senha;
 		this.gerente = gerente;
 	}
+	public Funcionario(String nome_Func, String login, String senha, boolean gerente) {
+		this.nome_Func = nome_Func;
+		this.login = login;
+		this.senha = senha;
+		this.gerente = gerente;
+	}
 
 	public int getId_Func() {
 		return id_Func;

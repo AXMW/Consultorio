@@ -13,6 +13,12 @@ public class Dentista {
 		this.CRM = CRM;
 		this.especialidade = especialidade;
 	}
+	
+	public Dentista(String nome_Dent, String CRM, String especialidade) {
+		this.nome_Dent = nome_Dent;
+		this.CRM = CRM;
+		this.especialidade = especialidade;
+	}
 
 	public int getId_Dent() {
 		return id_Dent;
