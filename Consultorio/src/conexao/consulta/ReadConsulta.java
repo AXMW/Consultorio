@@ -31,7 +31,7 @@ public class ReadConsulta {
 				cons.setPaciente(p);
 			}
 			
-			String queryF = "select * from Funcionario where ID_Func = " + resultset.getInt("ID_Func");
+			String queryF = "select * from Funcionario where ID_Func = " + cons.getFuncionario().getId_Func();
 			ResultSet resultSet3 = statement.executeQuery(queryF);
 			
 			while(resultSet3.next()) {
@@ -40,7 +40,7 @@ public class ReadConsulta {
 				cons.setFuncionario(f);
 			}
 			
-			String queryD = "select * from Dentista where ID_Dent = " + resultset.getInt("ID_Dent");
+			String queryD = "select * from Dentista where ID_Dent = " + cons.getDentista().getId_Dent();
 			ResultSet resultSet4 = statement.executeQuery(queryD);
 			
 			while(resultSet4.next()) {
