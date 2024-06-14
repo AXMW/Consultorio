@@ -5,6 +5,7 @@ import recursos.Paciente;
 import conexao.Conector;
 import conexao.paciente.*;
 import java.util.ArrayList;
+import recursos.Funcionario;
 
 public class TestaBD {
 
@@ -23,6 +24,8 @@ public class TestaBD {
 		for(Paciente paciente : pacientes) {
 			System.out.println(paciente.getId_Pac());
 		}
+		
+		Funcionario f = new Funcionario("Kaique", "Login", "Senha", true);
 	}
 
 }
