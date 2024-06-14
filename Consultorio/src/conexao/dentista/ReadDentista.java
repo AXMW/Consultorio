@@ -21,4 +21,17 @@ public class ReadDentista {
 		resultset.close();
 		return dentistas;
 	}
+	
+	public static Dentista read(Connection con, String CRM) throws Exception {
+		Dentista d = null;
+		Statement statement = con.createStatement();
+		String query = "select * from Dentista where CRM = " + CRM;
+		ResultSet resultset = statement.executeQuery(query);
+		while(resultset.next()) {
+			d = new Dentista(resultset.getInt("ID_Dent"), resultset.getString("Nome_Dent"), 
+					resultset.getString("CRM"), resultset.getString("Especialidade"));
+		}
+		resultset.close();
+		return d;
+	}
 }
